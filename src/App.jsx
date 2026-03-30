@@ -101,6 +101,21 @@ function App() {
               <p className="body-text">
                 We combine high-protein bowls, millet breakfasts and guilt-free desserts so you can eat cleaner without sacrificing flavor. Every meal is designed around performance, taste and convenience.
               </p>
+              <div
+                className="notice-banner"
+                style={{
+                  backgroundColor: '#fff4e1',
+                  border: '2px solid #e68a00',
+                  color: '#663300',
+                  padding: '1rem 1.25rem',
+                  borderRadius: '1rem',
+                  marginBottom: '1.5rem',
+                  fontWeight: 700,
+                  lineHeight: 1.5,
+                }}
+              >
+                Important: Bowlvana.in website is under active development. The menu, pricing and ordering system are not final yet, and some features may still be incomplete. For all enquiries, please call or WhatsApp at <a href="tel:8498803808" style={{ color: '#663300', textDecoration: 'underline' }}>8498803808</a>.
+              </div>
               <div className="button-group">
                 <a className="button" href="#page-2">View menu</a>
                 <a className="button-secondary" href="#page-3">Subscribe now</a>
