@@ -87,7 +87,34 @@ function App() {
   return (
     <div className="app-shell">
       <PageNav />
-      <main className="site-content">
+      <div
+        className="notice-banner"
+        style={{
+          position: 'fixed',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 999,
+          backgroundColor: '#fff7cc',
+          borderTop: '5px solid #ff8a00',
+          color: '#5a3000',
+          padding: '1.1rem 1.25rem',
+          fontWeight: 800,
+          lineHeight: 1.4,
+          textAlign: 'center',
+          fontSize: '1rem',
+          letterSpacing: '0.01em',
+          boxShadow: '0 -6px 20px rgba(0, 0, 0, 0.12)',
+        }}
+      >
+        <span style={{ display: 'block', fontSize: '1.05rem', marginBottom: '0.25rem' }}>
+          WEBSITE UNDER DEVELOPMENT
+        </span>
+        <span style={{ display: 'inline-block', maxWidth: '980px' }}>
+          Bowlvana restaurant is operational and accepting subscriptions, Zomato, Swiggy, takeaway, and free home delivery within 7km. The website is still under development and will go live very shortly. For full enquiries, menu details, pricing, or delivery support, call or WhatsApp <a href="tel:8498803808" style={{ color: '#5a3000', textDecoration: 'underline' }}>8498803808</a>. Happy eating!
+        </span>
+      </div>
+      <main className="site-content" style={{ paddingBottom: '6.5rem' }}>
         <section id="page-1" className="page-section">
           <SectionHeader
             label="Page 1 of 5"
@@ -101,21 +128,6 @@ function App() {
               <p className="body-text">
                 We combine high-protein bowls, millet breakfasts and guilt-free desserts so you can eat cleaner without sacrificing flavor. Every meal is designed around performance, taste and convenience.
               </p>
-              <div
-                className="notice-banner"
-                style={{
-                  backgroundColor: '#fff4e1',
-                  border: '2px solid #e68a00',
-                  color: '#663300',
-                  padding: '1rem 1.25rem',
-                  borderRadius: '1rem',
-                  marginBottom: '1.5rem',
-                  fontWeight: 700,
-                  lineHeight: 1.5,
-                }}
-              >
-                Important: Bowlvana.in website is under active development. The menu, pricing and ordering system are not final yet, and some features may still be incomplete. For all enquiries, please call or WhatsApp at <a href="tel:8498803808" style={{ color: '#663300', textDecoration: 'underline' }}>8498803808</a>.
-              </div>
               <div className="button-group">
                 <a className="button" href="#page-2">View menu</a>
                 <a className="button-secondary" href="#page-3">Subscribe now</a>
