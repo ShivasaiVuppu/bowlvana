@@ -1,0 +1,1 @@
+Place all menu and site images here. Use descriptive filenames, e.g. chicken-bowl.jpg, tofu-wrap.jpg, etc.

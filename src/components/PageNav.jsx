@@ -1,11 +1,11 @@
 import React from 'react';
 
 const navItems = [
-  { id: 'page-1', label: 'Intro & Contact' },
-  { id: 'page-2', label: 'Menu' },
-  { id: 'page-3', label: 'Subscription' },
-  { id: 'page-4', label: 'Contact Us' },
-  { id: 'page-5', label: 'About Us' },
+  { id: 'intro', label: 'Intro & Contact' },
+  { id: 'menu', label: 'Menu' },
+  { id: 'subscribe', label: 'Subscription' },
+  { id: 'contact', label: 'Contact Us' },
+  { id: 'about', label: 'About Us' },
 ];
 
 export function PageNav() {
