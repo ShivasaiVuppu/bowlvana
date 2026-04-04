@@ -1,9 +1,7 @@
-
 import React, { useState } from 'react';
 
-// To add images, place them in src/assets with descriptive names (e.g. chicken-bowl.jpg)
-// Add an 'image' property to each item with the filename (e.g. 'chicken-bowl.jpg')
-const menu = [
+// Menu data organized by sections
+const menuSections = [
   {
     category: 'Bowls',
     items: [
@@ -16,7 +14,7 @@ const menu = [
       { name: 'Falafel Over Rice Bowl', price: 250.95, description: 'Crispy falafel balls, fresh salad, and rice, drizzled with our signature sauce.', image: 'falafel-rice-bowl.jpg' },
       { name: 'Scrambled Egg Over Rice Bowl', price: 250.95, description: 'Fluffy scrambled eggs with veggies, served over a bed of rice for a protein-rich meal.', image: 'scrambled-egg-bowl.jpg' },
       { name: 'Chicken tikka Over Rice Bowl', price: 303.45, description: 'Juicy chicken tikka pieces, aromatic rice, and a side of fresh salad.', image: 'chicken-tikka-bowl.jpg' },
-      { name: 'Bowlvanas Chicken Over Rice Bowl', price: 292.95, description: 'Our signature grilled chicken, brown rice, and chef’s special sauce.', image: 'bowlvana-chicken-bowl.jpg' },
+      { name: 'Bowlvanas Chicken Over Rice Bowl', price: 292.95, description: 'Our signature grilled chicken, brown rice, and chef\'s special sauce.', image: 'bowlvana-chicken-bowl.jpg' },
       { name: 'Chicken Over Rice Bowl', price: 282.45, description: 'Classic grilled chicken served with rice and seasonal vegetables.', image: 'chicken-rice-bowl.jpg' },
       { name: 'Chana Over Rice Bowl', price: 250.95, description: 'Protein-packed chickpeas cooked in mild spices, served over rice.', image: 'chana-rice-bowl.jpg' },
       { name: 'Cilantro Chicken Over Rice', price: 303.45, description: 'Grilled chicken tossed in fresh cilantro, served with rice and veggies.', image: 'cilantro-chicken-bowl.jpg' },
@@ -149,33 +147,39 @@ const menu = [
 export default function Menu() {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
+  // If no category selected, show category buttons
   if (!selectedCategory) {
-    // Show only category buttons
     return (
-      <section className="menu-gallery">
-        <h2>Our Menu</h2>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center', marginTop: 40 }}>
-          {menu.map((section) => (
-            <button
-              key={section.category}
-              style={{
-                background: '#ffd700',
-                color: '#191919',
-                fontWeight: 900,
-                fontSize: '1.5rem',
-                border: 'none',
-                borderRadius: 16,
-                padding: '24px 38px',
-                cursor: 'pointer',
-                boxShadow: '0 4px 18px #0002',
-                marginBottom: 16,
-                letterSpacing: '0.03em',
-                transition: 'background 0.2s, color 0.2s',
-              }}
-              onClick={() => setSelectedCategory(section.category)}
-            >
-              {section.category}
-            </button>
+      <section className="menu-page">
+        <div className="page-header">
+          <h1 className="page-title">Our Menu</h1>
+          <p className="page-subtitle">
+            Choose a category to explore our delicious and healthy options
+          </p>
+        </div>
+
+        <div className="categories-grid">
+          {menuSections.map((section) => (
+            <div key={section.category} className="category-card">
+              {/* Category Image Placeholder */}
+              <div className="category-image-placeholder">
+                <div className="image-placeholder-box">
+                  <span className="image-placeholder-text">
+                    📷 {section.category} Image - Add later
+                  </span>
+                </div>
+              </div>
+              
+              <h3 className="category-title">{section.category}</h3>
+              <p className="category-count">{section.items.length} items available</p>
+              
+              <button
+                className="category-button"
+                onClick={() => setSelectedCategory(section.category)}
+              >
+                View Items
+              </button>
+            </div>
           ))}
         </div>
       </section>
@@ -183,47 +187,47 @@ export default function Menu() {
   }
 
   // Show items for selected category
-  const section = menu.find((s) => s.category === selectedCategory);
+  const section = menuSections.find((s) => s.category === selectedCategory);
+  
   return (
-    <section className="menu-gallery">
-      <button
-        onClick={() => setSelectedCategory(null)}
-        style={{
-          background: 'none',
-          color: '#ffd700',
-          fontWeight: 800,
-          fontSize: '1.1rem',
-          border: '2px solid #ffd700',
-          borderRadius: 12,
-          padding: '10px 24px',
-          cursor: 'pointer',
-          marginBottom: 32,
-          marginTop: 12,
-          letterSpacing: '0.03em',
-        }}
-      >
-        ← Back to Categories
-      </button>
-      <h2 style={{ marginBottom: 16 }}>{section.category}</h2>
-      <div className="menu-grid">
+    <section className="menu-page">
+      <div className="page-header">
+        <button
+          className="back-button"
+          onClick={() => setSelectedCategory(null)}
+        >
+          ← Back to Categories
+        </button>
+        <h1 className="page-title">{section.category}</h1>
+        <p className="page-subtitle">
+          {section.items.length} delicious options to choose from
+        </p>
+      </div>
+
+      {/* Category Image Placeholder */}
+      <div className="category-image-placeholder">
+        <div className="image-placeholder-box">
+          <span className="image-placeholder-text">
+            📷 {section.category} Image - Add later
+          </span>
+        </div>
+      </div>
+
+      {/* Menu Items */}
+      <div className="menu-items-list">
         {section.items.map((item) => (
-          <div className="menu-item" key={item.name}>
-            {item.image ? (
-              (() => {
-                try {
-                  // Dynamically require image, fallback to placeholder if not found
-                  // eslint-disable-next-line import/no-dynamic-require, global-require
-                  return <img src={require(`../assets/${item.image}`)} alt={item.name} className="menu-img" />;
-                } catch (e) {
-                  return <div className="menu-img" style={{background:'#222',color:'#ffd700',display:'flex',alignItems:'center',justifyContent:'center',height:120}}><span style={{fontSize:'1.2em'}}>No Image</span></div>;
-                }
-              })()
-            ) : null}
-            <h4 style={{ margin: '0 0 8px 0', color: '#fff' }}>{item.name}</h4>
-            <p style={{ margin: 0, color: '#ffd700', fontWeight: 700, fontSize: '1.1em' }}>₹{item.price.toFixed(2)}</p>
-            {item.description && (
-              <p style={{ margin: '8px 0 0 0', color: '#e6e6e6', fontSize: '0.97em' }}>{item.description}</p>
-            )}
+          <div key={item.name} className="menu-item-row">
+            <div className="menu-item-image">
+              <span className="image-placeholder-text">📷 Image</span>
+            </div>
+            <div className="menu-item-content">
+              <div className="menu-item-info">
+                <h4>{item.name}</h4>
+                <p>{item.description}</p>
+                <span className="menu-item-badge">Healthy Choice</span>
+              </div>
+              <div className="menu-item-price">₹{item.price}</div>
+            </div>
           </div>
         ))}
       </div>

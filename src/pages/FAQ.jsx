@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 
 const faqs = [
@@ -29,20 +28,21 @@ const faqs = [
 
 export default function FAQ() {
   const [open, setOpen] = useState(null);
+  
   return (
     <section className="faq-section" style={{padding:'32px 0 48px 0', display:'flex', flexDirection:'column', alignItems:'center', minHeight:'100vh'}}>
       <div style={{width:'100%', maxWidth:800, margin:'0 auto', display:'flex', flexDirection:'column', alignItems:'center', padding:'0 8px'}}>
-        <h2 style={{textAlign:'center',fontSize:'2.3rem',fontWeight:900,letterSpacing:'0.01em',color:'#d29f00',marginBottom:10}}>🍱 Bowlvana – Frequently Asked Questions (FAQ)</h2>
+        <h2 style={{textAlign:'center',fontSize:'2.3rem',fontWeight:900,letterSpacing:'0.01em',color:'#ff6600',marginBottom:10}}>🍱 Bowlvana – Frequently Asked Questions (FAQ)</h2>
         <div style={{width:'100%',marginTop:24}}>
           {faqs.map((faq, i) => (
-            <div key={faq.q} style={{marginBottom:18,background:'#181818',borderRadius:14,boxShadow:'0 2px 18px #0003',border:'2px solid #b57d00',overflow:'hidden',maxWidth:600,width:'100%',marginLeft:'auto',marginRight:'auto'}}>
+            <div key={faq.q} style={{marginBottom:18,background:'#ffffff',borderRadius:14,boxShadow:'0 2px 18px rgba(0,0,0,0.08)',border:'2px solid #ff6600',overflow:'hidden',maxWidth:600,width:'100%',marginLeft:'auto',marginRight:'auto'}}>
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 style={{
                   width:'100%',
                   background:'none',
                   border:'none',
-                  color:'#ffd700',
+                  color:'#ff6600',
                   fontWeight:800,
                   fontSize:'1.08rem',
                   textAlign:'left',
@@ -63,7 +63,7 @@ export default function FAQ() {
                 </span>
               </button>
               {open === i && (
-                <div id={`faq-panel-${i}`} style={{padding:'14px 14px 16px 14px',color:'#e6e6e6',fontWeight:600,fontSize:'1.05rem',borderTop:'1px solid #b57d00',background:'#232323'}}>
+                <div id={`faq-panel-${i}`} style={{padding:'14px 14px 16px 14px',color:'#333333',fontWeight:600,fontSize:'1.05rem',borderTop:'1px solid #ff6600',background:'#ffffff'}}>
                   {faq.a}
                 </div>
               )}
@@ -71,8 +71,8 @@ export default function FAQ() {
           ))}
         </div>
         <div style={{marginTop:36,display:'flex',justifyContent:'center',width:'100%'}}>
-          <div style={{textAlign:'center',color:'#ffd700',fontWeight:900,fontSize:'1.08rem',background:'#181818',borderRadius:14,padding:'14px 10px',border:'2px solid #d29f00',boxShadow:'0 2px 18px #0003',maxWidth:400,width:'100%'}}>
-            👉 Still have questions? <a href="https://wa.me/918498803808" style={{color:'#ffd700',textDecoration:'underline'}}>Message us on WhatsApp</a>
+          <div style={{textAlign:'center',color:'#ff6600',fontWeight:900,fontSize:'1.08rem',background:'#ffffff',borderRadius:14,padding:'14px 10px',border:'2px solid #ff6600',boxShadow:'0 2px 18px rgba(0,0,0,0.08)',maxWidth:400,width:'100%'}}>
+            👉 Still have questions? <a href="https://wa.me/918498803808" style={{color:'#ff6600',textDecoration:'underline'}}>Message us on WhatsApp</a>
           </div>
         </div>
       </div>
