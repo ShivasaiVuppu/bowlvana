@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 // To add images, place them in src/assets with descriptive names (e.g. chicken-bowl.jpg)
 // Add an 'image' property to each item with the filename (e.g. 'chicken-bowl.jpg')
@@ -147,36 +147,86 @@ const menu = [
 ];
 
 export default function Menu() {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  if (!selectedCategory) {
+    // Show only category buttons
+    return (
+      <section className="menu-gallery">
+        <h2>Our Menu</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center', marginTop: 40 }}>
+          {menu.map((section) => (
+            <button
+              key={section.category}
+              style={{
+                background: '#ffd700',
+                color: '#191919',
+                fontWeight: 900,
+                fontSize: '1.5rem',
+                border: 'none',
+                borderRadius: 16,
+                padding: '24px 38px',
+                cursor: 'pointer',
+                boxShadow: '0 4px 18px #0002',
+                marginBottom: 16,
+                letterSpacing: '0.03em',
+                transition: 'background 0.2s, color 0.2s',
+              }}
+              onClick={() => setSelectedCategory(section.category)}
+            >
+              {section.category}
+            </button>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  // Show items for selected category
+  const section = menu.find((s) => s.category === selectedCategory);
   return (
     <section className="menu-gallery">
-      <h2>Our Menu</h2>
-      {menu.map((section) => (
-        <div key={section.category} style={{ marginBottom: 36 }}>
-          <h3 style={{ color: '#b57d00', marginBottom: 16 }}>{section.category}</h3>
-          <div className="menu-grid">
-            {section.items.map((item) => (
-              <div className="menu-item" key={item.name}>
-                {item.image ? (
-                  (() => {
-                    try {
-                      // Dynamically require image, fallback to placeholder if not found
-                      // eslint-disable-next-line import/no-dynamic-require, global-require
-                      return <img src={require(`../assets/${item.image}`)} alt={item.name} className="menu-img" />;
-                    } catch (e) {
-                      return <div className="menu-img" style={{background:'#222',color:'#ffd700',display:'flex',alignItems:'center',justifyContent:'center',height:120}}><span style={{fontSize:'1.2em'}}>No Image</span></div>;
-                    }
-                  })()
-                ) : null}
-                <h4 style={{ margin: '0 0 8px 0', color: '#fff' }}>{item.name}</h4>
-                <p style={{ margin: 0, color: '#ffd700', fontWeight: 700, fontSize: '1.1em' }}>₹{item.price.toFixed(2)}</p>
-                {item.description && (
-                  <p style={{ margin: '8px 0 0 0', color: '#e6e6e6', fontSize: '0.97em' }}>{item.description}</p>
-                )}
-              </div>
-            ))}
+      <button
+        onClick={() => setSelectedCategory(null)}
+        style={{
+          background: 'none',
+          color: '#ffd700',
+          fontWeight: 800,
+          fontSize: '1.1rem',
+          border: '2px solid #ffd700',
+          borderRadius: 12,
+          padding: '10px 24px',
+          cursor: 'pointer',
+          marginBottom: 32,
+          marginTop: 12,
+          letterSpacing: '0.03em',
+        }}
+      >
+        ← Back to Categories
+      </button>
+      <h2 style={{ marginBottom: 16 }}>{section.category}</h2>
+      <div className="menu-grid">
+        {section.items.map((item) => (
+          <div className="menu-item" key={item.name}>
+            {item.image ? (
+              (() => {
+                try {
+                  // Dynamically require image, fallback to placeholder if not found
+                  // eslint-disable-next-line import/no-dynamic-require, global-require
+                  return <img src={require(`../assets/${item.image}`)} alt={item.name} className="menu-img" />;
+                } catch (e) {
+                  return <div className="menu-img" style={{background:'#222',color:'#ffd700',display:'flex',alignItems:'center',justifyContent:'center',height:120}}><span style={{fontSize:'1.2em'}}>No Image</span></div>;
+                }
+              })()
+            ) : null}
+            <h4 style={{ margin: '0 0 8px 0', color: '#fff' }}>{item.name}</h4>
+            <p style={{ margin: 0, color: '#ffd700', fontWeight: 700, fontSize: '1.1em' }}>₹{item.price.toFixed(2)}</p>
+            {item.description && (
+              <p style={{ margin: '8px 0 0 0', color: '#e6e6e6', fontSize: '0.97em' }}>{item.description}</p>
+            )}
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   );
 }

@@ -8,7 +8,7 @@ export default function Home() {
       <div className="hero-content">
         <h1>Eat Clean. Live Strong. Delivered Daily.</h1>
         <p>Bowlvana brings you chef-crafted, high-protein meals and healthy bowls, delivered fresh to your door in Hyderabad.</p>
-        <Link className="cta-button" to="/subscribe">Start Your Plan</Link>
+        <Link className="cta-button" to="/#subscribe">Start Your Plan</Link>
       </div>
     </section>
   );

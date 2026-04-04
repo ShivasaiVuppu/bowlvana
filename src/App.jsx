@@ -1,6 +1,16 @@
 ﻿import React from 'react';
 import MainNav from './components/MainNav';
-import AppRoutes from './AppRoutes';
+import Home from './pages/Home';
+import HowItWorks from './pages/HowItWorks';
+import Menu from './pages/Menu';
+import Subscribe from './pages/Subscribe';
+import Delivery from './pages/Delivery';
+import Transformations from './pages/Transformations';
+import Corporate from './pages/Corporate';
+import FAQ from './pages/FAQ';
+import Blog from './pages/Blog';
+import Contact from './pages/Contact';
+import About from './pages/About';
 
 const menuItems = [
   {
@@ -48,13 +58,23 @@ const plans = [
   },
 ];
 
+
 function App() {
   return (
     <div className="app-shell">
       <MainNav />
-      {/* ...removed website under development notice... */}
-      <main className="site-content" style={{ paddingBottom: '6.5rem' }}>
-        <AppRoutes />
+      <main className="site-content scroll-snap-container" style={{ paddingBottom: '6.5rem' }}>
+        <section id="home" className="scroll-snap-section"><Home /></section>
+        <section id="how-it-works" className="scroll-snap-section"><HowItWorks /></section>
+        <section id="menu" className="scroll-snap-section"><Menu /></section>
+        <section id="subscribe" className="scroll-snap-section"><Subscribe /></section>
+        <section id="delivery" className="scroll-snap-section"><Delivery /></section>
+        <section id="transformations" className="scroll-snap-section"><Transformations /></section>
+        <section id="corporate" className="scroll-snap-section"><Corporate /></section>
+        <section id="faq" className="scroll-snap-section"><FAQ /></section>
+        <section id="blog" className="scroll-snap-section"><Blog /></section>
+        <section id="contact" className="scroll-snap-section"><Contact /></section>
+        <section id="about" className="scroll-snap-section"><About /></section>
         <footer className="site-footer">
           © 2026 Bowlvana.in · Hyderabad · Cloud kitchen experience
         </footer>
