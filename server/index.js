@@ -54,7 +54,7 @@ app.post('/api/subscribe', async (req, res) => {
 
   const mailOptions = {
     from: process.env.SMTP_FROM || process.env.SMTP_USER,
-    to: process.env.SUBSCRIPTION_TO || 'vsaishiva99@gmail.com',
+    to: process.env.SUBSCRIPTION_TO || 'bowlvana.core@gmail.com',
     subject: `Bowlvana subscription request from ${name}`,
     text: message,
     replyTo: email,

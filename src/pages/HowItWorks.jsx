@@ -1,44 +1,148 @@
-// Simple SVG icons for each step
-const icons = [
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" key="plan"><circle cx="12" cy="12" r="10" stroke="#ff6600" strokeWidth="2"/><path d="M8 12h8M8 16h5" stroke="#ff6600" strokeWidth="2" strokeLinecap="round"/><circle cx="9" cy="8" r="1.5" fill="#ff6600"/></svg>,
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" key="personalize"><rect x="4" y="4" width="16" height="16" rx="8" stroke="#ff6600" strokeWidth="2"/><path d="M12 8v4l3 3" stroke="#ff6600" strokeWidth="2" strokeLinecap="round"/></svg>,
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" key="delivery"><path d="M3 17V7a2 2 0 1 2-2h10a2 2 0 1 2 2v10" stroke="#ff6600" strokeWidth="2"/><rect x="7" y="13" width="10" height="6" rx="3" stroke="#ff6600" strokeWidth="2"/><circle cx="7" cy="19" r="2" fill="#ff6600"/><circle cx="17" cy="19" r="2" fill="#ff6600"/></svg>,
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" key="track"><path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" stroke="#ff6600" strokeWidth="2"/></svg>,
-];
+import React from 'react';
 
-const steps = [
+const STEPS = [
   {
-    title: 'Choose Plan',
-    desc: 'Subscribe to our healthy diet plan and get a unique login id & password.',
+    number: '01',
+    icon: '🎯',
+    title: 'Share Your Goals',
+    description:
+      'Tell us your health goals, dietary preferences, and lifestyle needs. We build everything around you — not the other way around.',
   },
   {
-    title: 'Structure Your Diet',
-    desc: 'A nutritionist will be assigned to you and your diet will be customized.',
+    number: '02',
+    icon: '📋',
+    title: 'Personalized Nutrition Plan',
+    description:
+      "Our expert nutritionist crafts a fully customized meal plan inspired by New York's iconic bowl culture and adapted for Indian palates.",
   },
   {
+    number: '03',
+    icon: '👨‍🍳',
+    title: 'Freshly Cooked Daily',
+    description:
+      'Every meal is prepared fresh each morning — zero cold storage, zero bulk prep. Clean, seasonal, high-quality ingredients only.',
+  },
+  {
+    number: '04',
+    icon: '🛵',
     title: 'Doorstep Delivery',
-    desc: 'Delivery of healthy food across Delhi NCR, Bengaluru, Mumbai & Pune everyday as per your diet designed.',
+    description:
+      'Our own fleet covers up to 7 km from our kitchen. Beyond that, we partner with Zomato, Swiggy, Rapido, and Uber for extended reach.',
   },
   {
-    title: 'Get Fit',
-    desc: 'Achieve your fitness goals with our full support & in-built progress tracker.',
+    number: '05',
+    icon: '📈',
+    title: 'Track & Transform',
+    description:
+      'Ongoing support, progress tracking, and expert guidance from our team — so you hit your goals and keep them.',
+  },
+  {
+    number: '06',
+    icon: '🏆',
+    title: "Hyderabad's First",
+    description:
+      "Bowlvana is Hyderabad's first dedicated diet-based cloud kitchen, trusted by hundreds of customers across the city.",
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="how-it-works" style={{padding:'64px 20px'}}>
-      <h2 style={{textAlign:'center',fontSize:'3rem',fontWeight:900,letterSpacing:'0.01em',color:'var(--accent)',marginBottom:16,textTransform:'uppercase'}}>#HOWITWORKS</h2>
-      <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:48,maxWidth:1200,margin:'0 auto'}}>
-        <div className="how-steps" style={{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(250px, 1fr))',gap:32,width:'100%'}}>
-          {steps.map((step, i) => (
-            <div key={step.title} style={{background:'#ffffff',borderRadius:8,padding:'32px 24px',boxShadow:'0 2px 20px rgba(0,0,0,0.08)',display:'flex',flexDirection:'column',alignItems:'center',border:'1px solid var(--border)',textAlign:'center'}}>
-              <div style={{marginBottom:20}}>{icons[i]}</div>
-              <h3 style={{color:'var(--text)',fontWeight:800,fontSize:'1.4rem',marginBottom:12}}>{step.title}</h3>
-              <p style={{color:'var(--muted)',fontSize:'1rem',lineHeight:1.6}}>{step.desc}</p>
+    <section
+      id="how-it-works"
+      className="section-wrap bg-dark-2"
+    >
+      <div className="container">
+
+        {/* ── Header ──────────────────────────────────────── */}
+        <div style={{ textAlign: 'center', marginBottom: 72 }}>
+          <span className="section-eyebrow" style={{ justifyContent: 'center', display: 'inline-flex', paddingLeft: 0 }}>
+            <span style={{ width: 18, height: 1.5, background: 'var(--gold)', marginRight: 10, display: 'inline-block', alignSelf: 'center' }} />
+            The Process
+            <span style={{ width: 18, height: 1.5, background: 'var(--gold)', marginLeft: 10, display: 'inline-block', alignSelf: 'center' }} />
+          </span>
+          <h2 className="display-heading" style={{ marginBottom: 16 }}>
+            How <em>Bowlvana</em> Works
+          </h2>
+          <p className="body-lead" style={{ maxWidth: 600, marginInline: 'auto' }}>
+            A world-class nutrition experience built around your unique body and goals —
+            from your first consultation to your doorstep.
+          </p>
+        </div>
+
+        {/* ── Steps grid ──────────────────────────────────── */}
+        <div className="grid-auto">
+          {STEPS.map((step) => (
+            <div
+              key={step.number}
+              className="glass-card"
+              style={{ padding: '36px 32px', position: 'relative', overflow: 'hidden' }}
+            >
+              {/* Background number */}
+              <span
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  top: 12, right: 20,
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '4.5rem',
+                  fontWeight: 700,
+                  color: 'var(--gold)',
+                  opacity: 0.06,
+                  lineHeight: 1,
+                  userSelect: 'none',
+                }}
+              >
+                {step.number}
+              </span>
+
+              <div style={{ fontSize: 38, marginBottom: 20 }}>{step.icon}</div>
+
+              <h3 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.3rem',
+                fontWeight: 700,
+                color: 'var(--gold-light)',
+                marginBottom: 12,
+                lineHeight: 1.2,
+              }}>
+                {step.title}
+              </h3>
+
+              <p style={{
+                fontSize: '0.93rem',
+                lineHeight: 1.75,
+                color: 'var(--text-muted)',
+              }}>
+                {step.description}
+              </p>
             </div>
           ))}
         </div>
+
+        {/* ── Pull quote ──────────────────────────────────── */}
+        <blockquote style={{
+          textAlign: 'center',
+          marginTop: 72,
+          paddingTop: 56,
+          borderTop: '1px solid rgba(210,159,0,0.14)',
+          maxWidth: 780,
+          marginInline: 'auto',
+        }}>
+          <span aria-hidden style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', color: 'var(--gold)', lineHeight: 0.5, display: 'block', marginBottom: 20 }}>"</span>
+          <p style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1.15rem, 2.2vw, 1.6rem)',
+            fontStyle: 'italic',
+            fontWeight: 400,
+            color: 'rgba(240,237,230,0.45)',
+            lineHeight: 1.55,
+          }}>
+            Inspired by New York's signature bowls, Bowlvana brings global nutrition
+            trends to Hyderabad — making clean eating easy, tasty, and accessible for everyone.
+          </p>
+          <span aria-hidden style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', color: 'var(--gold)', lineHeight: 0.5, display: 'block', marginTop: 20 }}>"</span>
+        </blockquote>
+
       </div>
     </section>
   );

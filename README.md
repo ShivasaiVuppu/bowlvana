@@ -8,7 +8,7 @@ A professional React website for Bowlvana.in — a healthy cloud kitchen in Hyde
 - White, black, and mustard orange brand palette
 - Clear page navigation for Intro, Menu, Subscription, Contact Us, and About Us
 - External CSS with clean layout and responsive design
-- Subscription form that opens email draft to `vsaishiva99@gmail.com`
+- Subscription form that opens email draft to `bowlvana.core@gmail.com`
 - Contact details and founder information displayed professionally
 
 ## Files
@@ -32,7 +32,7 @@ A professional React website for Bowlvana.in — a healthy cloud kitchen in Hyde
 
 ## Notes
 
-- The subscription form now sends collected data directly to `vsaishiva99@gmail.com` via server-side email.
+- The subscription form now sends collected data directly to `bowlvana.core@gmail.com` via server-side email.
 - No mail client opens when users submit the form.
 - You must copy `.env.example` to `.env` and fill in SMTP credentials before email sending works.
 - Use a valid SMTP provider (for example `smtp.gmail.com` with app-password credentials for Gmail).

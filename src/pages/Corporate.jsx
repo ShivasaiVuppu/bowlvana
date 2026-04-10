@@ -1,51 +1,150 @@
 import React from 'react';
 
+const FEATURES = [
+  'Customizable meal plans for teams of any size',
+  'High-protein, diet-based menus engineered to boost workplace productivity',
+  'Fresh, hygienic food prepared daily — delivered on time, every time',
+  'Flexible pricing for daily, weekly, or one-off events and meetings',
+  'Dietary accommodations: vegetarian, vegan, gluten-free, and more',
+  'Hassle-free bulk ordering with a dedicated account manager',
+  'Trusted by companies and startups across Hyderabad',
+];
 
 export default function Corporate() {
   return (
-    <section className="corporate-section" style={{padding:'32px 0 48px 0', display:'flex', flexDirection:'column', alignItems:'center', minHeight:'100vh'}}>
-      <div style={{width:'100%', maxWidth:900, margin:'0 auto', display:'flex', flexDirection:'column', alignItems:'center'}}>
-        <h2 style={{textAlign:'center',fontSize:'2.3rem',fontWeight:900,letterSpacing:'0.01em',color:'#ff6600',marginBottom:10}}>Corporate & Bulk Orders</h2>
-        <p style={{textAlign:'center',color:'#333333',fontSize:'1.18rem',maxWidth:700,margin:'0 auto 32px auto',fontWeight:600}}>
-          Bowlvana brings healthy, delicious catering to your office, event, or large group—where taste meets health, and every meal is crafted for energy and focus.
-        </p>
-        <ul style={{color:'#ff6600',fontWeight:700,fontSize:'1.13rem',marginBottom:32,marginTop:0,padding:0,listStyle:'none',textAlign:'center',maxWidth:700}}>
-          <li style={{marginBottom:18}}>
-            <span style={{color:'#ff6600',marginRight:8}}>✔</span>
-            Customizable meal plans for teams of any size
-          </li>
-          <li style={{marginBottom:18}}>
-            <span style={{color:'#ff6600',marginRight:8}}>✔</span>
-            High-protein, diet-based menus to boost productivity
-          </li>
-          <li style={{marginBottom:18}}>
-            <span style={{color:'#ff6600',marginRight:8}}>✔</span>
-            Fresh, hygienic food delivered on time, every time
-          </li>
-          <li style={{marginBottom:18}}>
-            <span style={{color:'#ff6600',marginRight:8}}>✔</span>
-            Affordable pricing for daily, weekly, or one-time events
-          </li>
-          <li style={{marginBottom:18}}>
-            <span style={{color:'#ff6600',marginRight:8}}>✔</span>
-            Special menu options for dietary needs (vegan, gluten-free, etc.)
-          </li>
-          <li style={{marginBottom:18}}>
-            <span style={{color:'#ff6600',marginRight:8}}>✔</span>
-            Hassle-free bulk ordering and dedicated support
-          </li>
-          <li style={{marginBottom:18}}>
-            <span style={{color:'#ff6600',marginRight:8}}>✔</span>
-            Trusted by leading companies and startups in Hyderabad
-          </li>
-        </ul>
-        <div style={{background:'#ffffff',borderRadius:18,padding:'22px 20px',boxShadow:'0 2px 18px rgba(0,0,0,0.08)',border:'2px solid #ff6600',maxWidth:420,margin:'0 auto',textAlign:'center'}}>
-          <div style={{color:'#ff6600',fontWeight:800,fontSize:'1.15rem',marginBottom:8}}>Book Your Corporate Meal Plan</div>
-          <div style={{color:'#333333',fontWeight:600,fontSize:'1.05rem',marginBottom:8}}>Contact us for a free consultation and custom quote:</div>
-          <div style={{color:'#ff6600',fontWeight:900,fontSize:'1.13rem',marginBottom:4}}>Call/WhatsApp: <a href="tel:8498803808" style={{color:'#ff6600',textDecoration:'underline'}}>8498803808</a></div>
-          <div style={{color:'#ff6600',fontWeight:900,fontSize:'1.13rem'}}>Email: <a href="mailto:vsaishiva99@gmail.com" style={{color:'#ff6600',textDecoration:'underline'}}>vsaishiva99@gmail.com</a></div>
+    <section
+      id="corporate"
+      className="section-wrap bg-dark-3"
+    >
+      <div className="container">
+
+        {/* ── Header ──────────────────────────────────────── */}
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <span className="section-eyebrow" style={{ display: 'inline-flex', paddingLeft: 0 }}>
+            <span style={{ width: 18, height: 1.5, background: 'var(--gold)', marginRight: 10, alignSelf: 'center', display: 'inline-block' }} />
+            Enterprise
+            <span style={{ width: 18, height: 1.5, background: 'var(--gold)', marginLeft: 10, alignSelf: 'center', display: 'inline-block' }} />
+          </span>
+          <h2 className="display-heading">Corporate &amp; <em>Bulk Orders</em></h2>
+          <p className="body-lead" style={{ maxWidth: 600, marginInline: 'auto' }}>
+            Healthy, delicious catering for your office, event, or large group.
+            Where performance meets nutrition.
+          </p>
         </div>
+
+        {/* ── Two-column ──────────────────────────────────── */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1.2fr 1fr',
+            gap: 64,
+            alignItems: 'center',
+          }}
+          className="corporate-grid"
+        >
+
+          {/* Left — feature list */}
+          <div>
+            <h3 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '1.5rem', fontWeight: 700,
+              color: 'var(--white)', marginBottom: 32, lineHeight: 1.2,
+            }}>
+              Everything your team<br />
+              <em style={{ color: 'var(--gold-light)' }}>needs to thrive</em>
+            </h3>
+
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {FEATURES.map(f => (
+                <li key={f} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                  <div style={{
+                    width: 22, height: 22, borderRadius: '50%', flexShrink: 0,
+                    background: 'linear-gradient(135deg, var(--gold), var(--gold-light))',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    marginTop: 1,
+                  }}>
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M2 5l2.5 2.5L8 3" stroke="#080705" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <span style={{ color: 'var(--text-muted)', lineHeight: 1.55, fontSize: '0.93rem' }}>
+                    {f}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right — contact card */}
+          <div style={{
+            background: 'var(--surface)',
+            border: '1px solid var(--border)',
+            borderRadius: 'var(--radius-xl)',
+            padding: '44px 36px',
+            textAlign: 'center',
+          }}>
+            <div style={{ fontSize: 56, marginBottom: 20 }}>🏢</div>
+
+            <h3 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '1.45rem', fontWeight: 700,
+              color: 'var(--white)', marginBottom: 10, lineHeight: 1.2,
+            }}>
+              Book a Free<br />
+              <em style={{ color: 'var(--gold-light)' }}>Consultation</em>
+            </h3>
+
+            <p style={{
+              color: 'var(--text-muted)', fontSize: '0.88rem',
+              lineHeight: 1.7, marginBottom: 32,
+            }}>
+              Tell us about your team size, frequency, and dietary needs.
+              We will send you a custom quote within 24 hours.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <a
+                href="tel:8498803808"
+                className="btn-primary"
+                style={{ justifyContent: 'center' }}
+              >
+                📞 Call / WhatsApp
+              </a>
+              <a
+                href="mailto:bowlvana.core@gmail.com"
+                className="btn-outline"
+                style={{ justifyContent: 'center' }}
+              >
+                ✉️ Email Us
+              </a>
+            </div>
+
+            {/* Contact info */}
+            <div style={{
+              marginTop: 28,
+              padding: '18px 20px',
+              background: 'var(--gold-dim)',
+              borderRadius: 'var(--radius-md)',
+              border: '1px solid var(--border)',
+            }}>
+              <div style={{ fontWeight: 700, color: 'var(--gold-light)', marginBottom: 4, fontSize: '0.95rem' }}>
+                📱 8498803808
+              </div>
+              <div style={{ color: 'var(--text-faint)', fontSize: '0.8rem' }}>
+                bowlvana.core@gmail.com
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .corporate-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 }

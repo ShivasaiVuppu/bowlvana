@@ -1,73 +1,147 @@
+import React from 'react';
 
-const deliveryAreas = [
-  'Vanasthalipuram',
-  'Dilshukhnagar',
-  'Kothapet',
-  'Uppal',
-  'Nagole',
-  'Hastinapuram',
-  'BN Reddy',
-  'LB Nagar',
-  'Hayathnagar',
+const DELIVERY_AREAS = [
+  'Vanasthalipuram', 'Dilsukhnagar', 'Kothapet',
+  'Uppal', 'Nagole', 'Hastinapuram',
+  'BN Reddy', 'LB Nagar', 'Hayathnagar',
 ];
 
-
+const DELIVERY_CARDS = [
+  {
+    icon: '🛵',
+    title: 'Own Fleet — Up to 7 km',
+    body: 'We operate our own delivery fleet to guarantee your food arrives hot, fresh, and on time. No third-party delays within our primary zone.',
+  },
+  {
+    icon: '📍',
+    title: 'Beyond 7 km?',
+    body: 'We coordinate deliveries further out via trusted partners — Rapido, Ola, and Uber. Just share your location and we will sort it.',
+  },
+  {
+    icon: '📱',
+    title: 'Order on Zomato & Swiggy',
+    body: 'Prefer your favourite food app? Bowlvana is listed on both Zomato and Swiggy for quick, familiar ordering.',
+  },
+  {
+    icon: '⏱️',
+    title: '30 – 45 Minute Delivery',
+    body: 'Average delivery window from kitchen to doorstep. We send you a heads-up when your order is on its way.',
+  },
+];
 
 export default function Delivery() {
   return (
-    <section className="delivery-section" style={{padding:'32px 0 48px 0', minHeight:'100vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
-      <div style={{width:'100%', maxWidth:1200, margin:'0 auto', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
-        <h2 style={{textAlign:'center',fontSize:'2.5rem',fontWeight:900,letterSpacing:'0.01em',color:'#ff6600',marginBottom:10}}>Delivery Information</h2>
-        <p style={{textAlign:'center',color:'#333333',fontSize:'1.2rem',maxWidth:700,margin:'0 auto 32px auto',fontWeight:600}}>
-          Bowlvana delivers chef-crafted, healthy meals daily across Hyderabad. Our own delivery fleet covers up to <span style={{color:'#ff6600',fontWeight:900}}>7km</span> from our kitchen, ensuring your food is always fresh—never cold-stored, never bulk-prepped.
-        </p>
-        <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:36, width:'100%'}}>
-          <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',gap:36, width:'100%'}}>
-            <div style={{background:'#ffffff',borderRadius:22,padding:'28px 24px',boxShadow:'0 4px 32px rgba(0,0,0,0.08)',border:'2px solid #ff6600',maxWidth:420,flex:'1 1 320px',minWidth:260,display:'flex',flexDirection:'column',alignItems:'center'}}>
-              <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:12,marginBottom:18}}>
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#ff6600" strokeWidth="2"/><path d="M7 12h10M12 7v10" stroke="#ff6600" strokeWidth="2" strokeLinecap="round"/></svg>
-                <span style={{color:'#ff6600',fontWeight:900,fontSize:'1.3rem'}}>Current Delivery Areas</span>
-              </div>
-              <div style={{display:'flex',flexWrap:'wrap',justifyContent:'center',gap:'0 32px',marginTop:8,maxWidth:340}}>
-                {deliveryAreas.map(area => (
-                  <span key={area} style={{color:'#ff6600',fontWeight:700,fontSize:'1.08rem',margin:'6px 0',minWidth:120,textAlign:'center'}}>{area}</span>
-                ))}
-              </div>
+    <section
+      id="delivery"
+      className="section-wrap bg-dark-1"
+    >
+      <div className="container">
+
+        {/* ── Header ──────────────────────────────────────── */}
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <span className="section-eyebrow" style={{ display: 'inline-flex', paddingLeft: 0 }}>
+            <span style={{ width: 18, height: 1.5, background: 'var(--gold)', marginRight: 10, alignSelf: 'center', display: 'inline-block' }} />
+            We Come To You
+            <span style={{ width: 18, height: 1.5, background: 'var(--gold)', marginLeft: 10, alignSelf: 'center', display: 'inline-block' }} />
+          </span>
+          <h2 className="display-heading">Delivery <em>Information</em></h2>
+          <p className="body-lead" style={{ maxWidth: 560, marginInline: 'auto' }}>
+            Chef-crafted meals, delivered daily across Hyderabad.
+            Never cold-stored. Always fresh.
+          </p>
+        </div>
+
+        {/* ── Current areas highlight ─────────────────────── */}
+        <div
+          className="glass-card"
+          style={{
+            padding: '36px 40px',
+            marginBottom: 32,
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 24,
+            alignItems: 'center',
+          }}
+        >
+          <div style={{ flex: '1 1 220px' }}>
+            <div style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '1.3rem', fontWeight: 700,
+              color: 'var(--white)', marginBottom: 8,
+            }}>
+              Current Delivery Areas
             </div>
-            <div style={{background:'#ffffff',borderRadius:18,padding:'22px 20px',boxShadow:'0 2px 18px rgba(0,0,0,0.08)',border:'2px solid #ff6600',maxWidth:420,flex:'1 1 320px',minWidth:260,display:'flex',flexDirection:'column',alignItems:'center'}}>
-              <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:10}}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 17V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10" stroke="#ff6600" strokeWidth="2"/><rect x="7" y="13" width="10" height="6" rx="3" stroke="#ff6600" strokeWidth="2"/><circle cx="7" cy="19" r="2" fill="#ff6600"/><circle cx="17" cy="19" r="2" fill="#ff6600"/></svg>
-                <span style={{color:'#ff6600',fontWeight:800,fontSize:'1.1rem'}}>Beyond 7km?</span>
-              </div>
-              <p style={{color:'#333333',fontWeight:600,fontSize:'1.05rem',margin:0,textAlign:'center'}}>
-                We can deliver further via trusted partners like Rapido, Ola, and Uber. Just let us know your location and we’ll arrange a safe, quick delivery!
-              </p>
-            </div>
-            <div style={{background:'#ffffff',borderRadius:18,padding:'22px 20px',boxShadow:'0 2px 18px rgba(0,0,0,0.08)',border:'2px solid #ff6600',maxWidth:420,flex:'1 1 320px',minWidth:260,display:'flex',flexDirection:'column',alignItems:'center'}}>
-              <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:10}}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="8" stroke="#ff6600" strokeWidth="2"/><path d="M8 15h8M8 11h8M8 7h8" stroke="#ff6600" strokeWidth="2" strokeLinecap="round"/></svg>
-                <span style={{color:'#ff6600',fontWeight:800,fontSize:'1.1rem'}}>Order on Zomato & Swiggy</span>
-              </div>
-              <p style={{color:'#333333',fontWeight:600,fontSize:'1.05rem',margin:0,textAlign:'center'}}>
-                Prefer your favorite app? Bowlvana is available on Zomato and Swiggy for your convenience.
-              </p>
-            </div>
-            <div style={{background:'#ffffff',borderRadius:18,padding:'22px 20px',boxShadow:'0 2px 18px rgba(0,0,0,0.08)',border:'2px solid #ff6600',maxWidth:420,flex:'1 1 320px',minWidth:260,display:'flex',flexDirection:'column',alignItems:'center'}}>
-              <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:10}}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#ff6600" strokeWidth="2"/><path d="M12 8v4l3 3" stroke="#ff6600" strokeWidth="2" strokeLinecap="round"/></svg>
-                <span style={{color:'#ff6600',fontWeight:800,fontSize:'1.1rem'}}>Real-Time Support</span>
-              </div>
-              <p style={{color:'#000000',fontWeight:600,fontSize:'1.05rem',margin:0,textAlign:'center'}}>
-                Our team is always available to help with delivery updates, custom requests, or any questions—just call or WhatsApp us!
-              </p>
-            </div>
+            <p style={{ fontSize: '0.87rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+              All areas within our primary 7 km delivery zone,
+              served directly by our own riders.
+            </p>
+          </div>
+
+          <div style={{
+            flex: '2 1 380px',
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 10,
+          }}>
+            {DELIVERY_AREAS.map(area => (
+              <span
+                key={area}
+                style={{
+                  background: 'var(--gold-dim)',
+                  border: '1px solid var(--border)',
+                  color: 'var(--gold-light)',
+                  fontSize: '0.82rem',
+                  fontWeight: 600,
+                  padding: '7px 16px',
+                  borderRadius: 'var(--radius-full)',
+                }}
+              >
+                {area}
+              </span>
+            ))}
           </div>
         </div>
-        <div style={{marginTop:40,textAlign:'center',color:'#ff6600',fontWeight:800,fontSize:'1.15rem',maxWidth:700,marginLeft:'auto',marginRight:'auto'}}>
-          <span style={{fontSize:'1.5rem',color:'#ff6600'}}>"</span>
-          Your health journey deserves the best—Bowlvana delivers it, fresh and fast, every single day.
-          <span style={{fontSize:'1.5rem',color:'#ff6600'}}>"</span>
+
+        {/* ── Info cards ──────────────────────────────────── */}
+        <div className="grid-auto">
+          {DELIVERY_CARDS.map(card => (
+            <div key={card.title} className="glass-card" style={{ padding: '32px 28px' }}>
+              <div style={{ fontSize: 36, marginBottom: 18 }}>{card.icon}</div>
+              <h3 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.15rem', fontWeight: 700,
+                color: 'var(--gold-light)', marginBottom: 10,
+              }}>
+                {card.title}
+              </h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>
+                {card.body}
+              </p>
+            </div>
+          ))}
         </div>
+
+        {/* ── Quote ───────────────────────────────────────── */}
+        <div style={{
+          textAlign: 'center',
+          marginTop: 64,
+          paddingTop: 48,
+          borderTop: '1px solid rgba(210,159,0,0.12)',
+        }}>
+          <p style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1.1rem, 2vw, 1.45rem)',
+            fontStyle: 'italic',
+            color: 'rgba(240,237,230,0.38)',
+            maxWidth: 680,
+            marginInline: 'auto',
+            lineHeight: 1.55,
+          }}>
+            "Your health journey deserves the best —
+            Bowlvana delivers it, fresh and fast, every single day."
+          </p>
+        </div>
+
       </div>
     </section>
   );

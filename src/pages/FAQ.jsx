@@ -1,80 +1,200 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-const faqs = [
-  // About Food & Quality
-  { q: 'What is Bowlvana?', a: 'Bowlvana is a healthy cloud kitchen offering fresh, high-protein, and balanced meal bowls designed for fitness, weight loss, and clean eating.' },
-  { q: 'Is your food really healthy?', a: 'Yes. We use fresh ingredients, minimal oil, and balanced macros (protein, carbs, fats) to ensure every meal supports your health goals.' },
-  { q: 'Do you use preservatives or artificial ingredients?', a: 'No. All meals are freshly prepared with no preservatives or artificial additives.' },
-  { q: 'Are your meals suitable for weight loss?', a: 'Absolutely. Our bowls are portion-controlled and nutrient-balanced, making them ideal for weight loss and clean diets.' },
-  { q: 'Do you provide calorie or nutrition details?', a: 'Yes, we can provide calorie and macro details on request for most meals.' },
-  // Menu & Customization
-  { q: 'What kind of food do you serve?', a: 'We offer protein bowls (chicken, paneer, tofu), rice bowls, healthy wraps, and salads.' },
-  { q: 'Can I customize my bowl?', a: 'Yes. You can customize protein (chicken/paneer/tofu), spice level, and add-ons.' },
-  { q: 'Do you have vegetarian and vegan options?', a: 'Yes. We have multiple vegetarian and vegan-friendly bowls.' },
-  { q: 'Is the food spicy?', a: 'We offer mild to spicy options. You can choose your preference while ordering.' },
-  // Orders & Delivery
-  { q: 'How can I order from Bowlvana?', a: 'You can order via our website, WhatsApp, or food delivery apps (if available).' },
-  { q: 'Do you offer home delivery?', a: 'Yes, we deliver within our service area.' },
-  { q: 'How long does delivery take?', a: 'Typically 30–45 minutes depending on location and order volume.' },
-  { q: 'What are your operating hours?', a: 'We are open daily. (You can update timing like: 11 AM – 11 PM)' },
-  // Fitness & Diet Plans
-  { q: 'Do you provide diet plans or subscriptions?', a: 'Yes. We offer weekly/monthly meal plans for weight loss, muscle gain, and clean eating.' },
-  { q: 'Are your meals good for gym users?', a: 'Yes. Our high-protein bowls are perfect for gym-goers and fitness enthusiasts.' },
-  // Payments & Support
-  { q: 'What payment methods do you accept?', a: 'We accept UPI, cash on delivery, and online payments.' },
-  { q: 'What if there is an issue with my order?', a: 'You can contact us immediately, and we will resolve it quickly.' },
-  { q: 'How can I contact Bowlvana?', a: 'You can reach us via phone, WhatsApp, or Instagram.' },
+const FAQ_ITEMS = [
+  {
+    category: 'About Bowlvana',
+    questions: [
+      { q: 'What is Bowlvana?', a: 'Bowlvana is Hyderabad\'s first dedicated diet-based cloud kitchen, offering fresh, high-protein, and balanced meal bowls designed for fitness, weight loss, and clean eating.' },
+      { q: 'Where are you located?', a: 'We are a cloud kitchen based in Hyderabad, serving the city via our own delivery fleet and third-party apps.' },
+      { q: 'What makes Bowlvana different from other meal services?', a: 'Every meal is cooked fresh daily — we do zero bulk prep and zero cold storage. Our nutritionist designs plans around your individual goals, not a generic template.' },
+    ],
+  },
+  {
+    category: 'Food & Quality',
+    questions: [
+      { q: 'Is your food really healthy?', a: 'Absolutely. We use fresh, high-quality ingredients with minimal oil and balanced macronutrients (protein, carbs, and healthy fats) in every meal.' },
+      { q: 'Do you use preservatives or artificial ingredients?', a: 'No. Every meal is prepared fresh with no preservatives, no artificial additives, and no artificial flavours.' },
+      { q: 'Are your meals suitable for weight loss?', a: 'Yes. Our bowls are portion-controlled, nutrient-dense, and calorie-conscious — ideal for sustainable weight loss without feeling deprived.' },
+      { q: 'Do you provide calorie or nutrition information?', a: 'Yes. We can provide calorie counts and macro breakdowns (protein / carbs / fat) for any item on request.' },
+    ],
+  },
+  {
+    category: 'Menu & Customisation',
+    questions: [
+      { q: 'Can I customise my bowl?', a: 'Yes. You can choose your protein (chicken / paneer / tofu / egg), spice level, and add-ons when you order or through your subscription plan.' },
+      { q: 'Do you have vegetarian and vegan options?', a: 'Yes. We have a wide range of vegetarian and fully vegan bowls, wraps, and desserts clearly labelled on our menu.' },
+      { q: 'Is the food spicy?', a: 'We offer mild, medium, and spicy options. You can specify your preference when ordering and we will prepare accordingly.' },
+    ],
+  },
+  {
+    category: 'Orders & Delivery',
+    questions: [
+      { q: 'How can I order from Bowlvana?', a: 'You can order via our website subscription form, WhatsApp (8498803808), or through Zomato and Swiggy.' },
+      { q: 'How long does delivery take?', a: 'Typically 30–45 minutes depending on your location and current order volume.' },
+      { q: 'What areas do you deliver to?', a: 'Our own fleet covers Vanasthalipuram, Dilsukhnagar, Kothapet, Uppal, Nagole, Hastinapuram, BN Reddy, LB Nagar, and Hayathnagar (within 7 km). We can arrange partner deliveries beyond that.' },
+      { q: 'What are your operating hours?', a: 'We are open daily from 8 AM to 12 PM.' },
+    ],
+  },
+  {
+    category: 'Subscriptions & Plans',
+    questions: [
+      { q: 'Do you offer subscription or meal plans?', a: 'Yes. We offer weekly and monthly meal plans tailored to your goals — weight loss, muscle gain, clean eating, or athletic performance.' },
+      { q: 'Are your meals good for gym-goers?', a: 'Yes. Our high-protein bowls and grilled options are specifically designed to support training, recovery, and muscle growth.' },
+      { q: 'Can I pause or modify my subscription?', a: 'Yes. Contact us via WhatsApp or email and we will adjust your plan accordingly.' },
+    ],
+  },
+  {
+    category: 'Payments & Support',
+    questions: [
+      { q: 'What payment methods do you accept?', a: 'We accept UPI, cash on delivery, and all major online payment methods.' },
+      { q: 'What if there is a problem with my order?', a: 'Contact us immediately via WhatsApp (8498803808) and we will resolve it as quickly as possible — usually within the hour.' },
+      { q: 'Do you do corporate or bulk orders?', a: 'Yes. We cater to offices, events, and large groups. Contact us for a free consultation and custom pricing.' },
+    ],
+  },
 ];
 
 export default function FAQ() {
-  const [open, setOpen] = useState(null);
-  
+  const [openIndex, setOpenIndex] = useState(null);
+
+  // Flatten all questions with a global index
+  const allItems = [];
+  FAQ_ITEMS.forEach(cat => {
+    cat.questions.forEach(q => allItems.push({ ...q, category: cat.category }));
+  });
+
+  const toggle = idx => setOpenIndex(prev => (prev === idx ? null : idx));
+
+  let globalIdx = 0;
+
   return (
-    <section className="faq-section" style={{padding:'32px 0 48px 0', display:'flex', flexDirection:'column', alignItems:'center', minHeight:'100vh'}}>
-      <div style={{width:'100%', maxWidth:800, margin:'0 auto', display:'flex', flexDirection:'column', alignItems:'center', padding:'0 8px'}}>
-        <h2 style={{textAlign:'center',fontSize:'2.3rem',fontWeight:900,letterSpacing:'0.01em',color:'#ff6600',marginBottom:10}}>🍱 Bowlvana – Frequently Asked Questions (FAQ)</h2>
-        <div style={{width:'100%',marginTop:24}}>
-          {faqs.map((faq, i) => (
-            <div key={faq.q} style={{marginBottom:18,background:'#ffffff',borderRadius:14,boxShadow:'0 2px 18px rgba(0,0,0,0.08)',border:'2px solid #ff6600',overflow:'hidden',maxWidth:600,width:'100%',marginLeft:'auto',marginRight:'auto'}}>
-              <button
-                onClick={() => setOpen(open === i ? null : i)}
-                style={{
-                  width:'100%',
-                  background:'none',
-                  border:'none',
-                  color:'#ff6600',
-                  fontWeight:800,
-                  fontSize:'1.08rem',
-                  textAlign:'left',
-                  padding:'16px 14px',
-                  cursor:'pointer',
-                  display:'flex',
-                  alignItems:'center',
-                  justifyContent:'space-between',
-                  outline:'none',
-                  transition:'background 0.2s',
-                }}
-                aria-expanded={open === i}
-                aria-controls={`faq-panel-${i}`}
-              >
-                <span>{faq.q}</span>
-                <span style={{marginLeft:16,transition:'transform 0.2s',transform:open===i?'rotate(90deg)':'rotate(0deg)'}}>
-                  ▶
-                </span>
-              </button>
-              {open === i && (
-                <div id={`faq-panel-${i}`} style={{padding:'14px 14px 16px 14px',color:'#333333',fontWeight:600,fontSize:'1.05rem',borderTop:'1px solid #ff6600',background:'#ffffff'}}>
-                  {faq.a}
-                </div>
-              )}
+    <section
+      id="faq"
+      className="section-wrap bg-dark-1"
+    >
+      <div className="container">
+
+        {/* ── Header ──────────────────────────────────────── */}
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <span className="section-eyebrow" style={{ display: 'inline-flex', paddingLeft: 0 }}>
+            <span style={{ width: 18, height: 1.5, background: 'var(--gold)', marginRight: 10, alignSelf: 'center', display: 'inline-block' }} />
+            Got Questions?
+            <span style={{ width: 18, height: 1.5, background: 'var(--gold)', marginLeft: 10, alignSelf: 'center', display: 'inline-block' }} />
+          </span>
+          <h2 className="display-heading">Frequently Asked <em>Questions</em></h2>
+          <p className="body-lead" style={{ maxWidth: 520, marginInline: 'auto' }}>
+            Everything you need to know about Bowlvana, our food, and how we work.
+          </p>
+        </div>
+
+        {/* ── Categories with accordions ──────────────────── */}
+        <div style={{ maxWidth: 820, marginInline: 'auto', display: 'flex', flexDirection: 'column', gap: 40 }}>
+          {FAQ_ITEMS.map(cat => (
+            <div key={cat.category}>
+
+              {/* Category heading */}
+              <h3 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.1rem', fontWeight: 600,
+                color: 'var(--gold)',
+                marginBottom: 14,
+                paddingBottom: 10,
+                borderBottom: '1px solid rgba(210,159,0,0.18)',
+                letterSpacing: '0.02em',
+              }}>
+                {cat.category}
+              </h3>
+
+              {/* Accordion items */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {cat.questions.map(item => {
+                  const idx = globalIdx++;
+                  const isOpen = openIndex === idx;
+
+                  return (
+                    <div
+                      key={item.q}
+                      style={{
+                        background: 'var(--surface)',
+                        border: `1px solid ${isOpen ? 'rgba(210,159,0,0.35)' : 'rgba(255,255,255,0.06)'}`,
+                        borderRadius: 'var(--radius-md)',
+                        overflow: 'hidden',
+                        transition: 'border-color 0.25s',
+                      }}
+                    >
+                      <button
+                        onClick={() => toggle(idx)}
+                        aria-expanded={isOpen}
+                        style={{
+                          all: 'unset',
+                          cursor: 'pointer',
+                          width: '100%',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          gap: 16,
+                          padding: '18px 22px',
+                          textAlign: 'left',
+                        }}
+                      >
+                        <span style={{
+                          fontWeight: 600,
+                          color: isOpen ? 'var(--white)' : 'var(--text-muted)',
+                          fontSize: '0.95rem',
+                          lineHeight: 1.4,
+                          transition: 'color 0.2s',
+                        }}>
+                          {item.q}
+                        </span>
+                        <span style={{
+                          color: 'var(--gold)',
+                          fontSize: '1.3rem',
+                          fontWeight: 300,
+                          flexShrink: 0,
+                          transform: isOpen ? 'rotate(45deg)' : 'none',
+                          transition: 'transform 0.25s ease',
+                          lineHeight: 1,
+                        }}>
+                          +
+                        </span>
+                      </button>
+
+                      {isOpen && (
+                        <div style={{
+                          padding: '0 22px 18px',
+                          color: 'var(--text-muted)',
+                          fontSize: '0.9rem',
+                          lineHeight: 1.75,
+                          borderTop: '1px solid rgba(255,255,255,0.04)',
+                          paddingTop: 14,
+                          animation: 'fadeIn 0.2s ease',
+                        }}>
+                          {item.a}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
             </div>
           ))}
         </div>
-        <div style={{marginTop:36,display:'flex',justifyContent:'center',width:'100%'}}>
-          <div style={{textAlign:'center',color:'#ff6600',fontWeight:900,fontSize:'1.08rem',background:'#ffffff',borderRadius:14,padding:'14px 10px',border:'2px solid #ff6600',boxShadow:'0 2px 18px rgba(0,0,0,0.08)',maxWidth:400,width:'100%'}}>
-            👉 Still have questions? <a href="https://wa.me/918498803808" style={{color:'#ff6600',textDecoration:'underline'}}>Message us on WhatsApp</a>
-          </div>
+
+        {/* ── WhatsApp CTA ────────────────────────────────── */}
+        <div style={{ textAlign: 'center', marginTop: 56 }}>
+          <p style={{ color: 'var(--text-muted)', marginBottom: 20, fontSize: '0.93rem' }}>
+            Still have a question not listed here?
+          </p>
+          <a
+            href="https://wa.me/918498803808"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+          >
+            💬 Ask Us on WhatsApp
+          </a>
         </div>
+
       </div>
     </section>
   );
