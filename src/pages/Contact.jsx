@@ -46,35 +46,6 @@ export default function Contact() {
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    const emailSubject = encodeURIComponent(
-      form.subject
-        ? `Bowlvana Website Enquiry — ${form.subject}`
-        : 'Bowlvana Website Enquiry'
-    );
-    const bodyLines = [
-      'Hello Bowlvana Team,',
-      '',
-      'A new enquiry has been submitted via the website contact form:',
-      '',
-      '─────────────────────────────────',
-      `Name    : ${form.name}`,
-      `Email   : ${form.email}`,
-      `Mobile  : ${form.mobile || 'Not provided'}`,
-      `Subject : ${form.subject || 'General Enquiry'}`,
-      '',
-      'Message:',
-      form.message,
-      '─────────────────────────────────',
-      '',
-      'Please respond to the customer at your earliest convenience.',
-      '',
-      'Bowlvana Website — Auto Notification',
-    ];
-
-    window.location.href =
-      `mailto:bowlvana.core@gmail.com?subject=${emailSubject}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-
     setSuccess(true);
   };
 
@@ -215,7 +186,7 @@ export default function Contact() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+              <form action="https://formsubmit.co/bowlvana.core@gmail.com" method="POST" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                   <label className={labelStyle}>

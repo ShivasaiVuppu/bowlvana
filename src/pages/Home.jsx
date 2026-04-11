@@ -98,7 +98,7 @@ export default function Home() {
             }}
           >
             {[
-              { value: '500+',  label: 'Happy Customers' },
+              { value: '1000+', label: 'Happy Customers' },
               { value: '7 km',  label: 'Fresh Delivery Radius' },
               { value: '50+',   label: 'Menu Items' },
               { value: '100%',  label: 'No Preservatives' },

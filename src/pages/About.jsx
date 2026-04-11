@@ -111,7 +111,7 @@ export default function About() {
             {/* Mini stats */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
               {[
-                { val: '500+',  lbl: 'Customers' },
+                { val: '1000+', lbl: 'Customers' },
                 { val: '50+',   lbl: 'Menu Items' },
                 { val: '7 km',  lbl: 'Delivery Radius' },
                 { val: '100%',  lbl: 'Preservative-Free' },

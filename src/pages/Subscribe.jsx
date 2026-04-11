@@ -8,6 +8,7 @@ const INITIAL_FORM = {
   email:        '',
   goal:         '',
   diet:         '',
+  dietPlan:     '',
   allergies:    '',
   intolerances: '',
   notes:        '',
@@ -31,34 +32,6 @@ export default function Subscribe() {
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    const subject = encodeURIComponent('New Subscription Enquiry — Bowlvana');
-    const bodyLines = [
-      'Hello Bowlvana Team,',
-      '',
-      'A new subscription enquiry has been submitted from the website. Details below:',
-      '',
-      '─────────────────────────────────',
-      `Full Name      : ${form.name}`,
-      `Gender         : ${form.gender}`,
-      `Age            : ${form.age}`,
-      `Mobile         : ${form.mobile}`,
-      `Email          : ${form.email}`,
-      `Health Goal    : ${form.goal    || 'Not specified'}`,
-      `Diet Type      : ${form.diet}`,
-      `Food Allergies : ${form.allergies    || 'None'}`,
-      `Intolerances   : ${form.intolerances || 'None'}`,
-      `Additional Notes : ${form.notes   || 'None'}`,
-      '─────────────────────────────────',
-      '',
-      'Please follow up with the customer within 24 hours.',
-      '',
-      'Bowlvana Website — Auto Notification',
-    ];
-
-    window.location.href =
-      `mailto:bowlvana.core@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-
     setSuccess(true);
   };
 
@@ -199,7 +172,7 @@ export default function Subscribe() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+              <form action="https://formsubmit.co/bowlvana.core@gmail.com" method="POST" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
                 {/* Row: Name */}
                 <label className="field-label">
@@ -269,6 +242,16 @@ export default function Subscribe() {
                     </select>
                   </label>
                 </div>
+
+                {/* Row: Diet Plan Consultation */}
+                <label className="field-label">
+                  Diet Plan Consultation *
+                  <select className="field-input" name="dietPlan" required value={form.dietPlan} onChange={handleChange}>
+                    <option value="">Select option</option>
+                    <option value="I have an existing diet plan">I have an existing diet plan</option>
+                    <option value="Please create a diet plan with nutritionist consultation">Please create a diet plan with nutritionist consultation</option>
+                  </select>
+                </label>
 
                 {/* Row: Allergies + Intolerances */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
