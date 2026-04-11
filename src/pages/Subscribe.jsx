@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const INITIAL_FORM = {
   name:         '',
@@ -32,7 +33,34 @@ export default function Subscribe() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setSuccess(true);
+
+    const templateParams = {
+      name: form.name,
+      email: form.email,
+      mobile: form.mobile,
+      gender: form.gender,
+      age: form.age,
+      goal: form.goal,
+      diet: form.diet,
+      dietPlan: form.dietPlan,
+      allergies: form.allergies,
+      intolerances: form.intolerances,
+      notes: form.notes,
+      enquiry_type: 'Subscription Enquiry'
+    };
+
+    emailjs.send(
+      'service_stuxbpj',    // EmailJS service ID
+      'template_op4q5gl', // EmailJS template ID (create this in EmailJS)
+      templateParams,
+      'KM_lYNA3_b38eQcIs'  // EmailJS public key
+    ).then((result) => {
+      console.log('Email successfully sent!', result.text);
+      setSuccess(true);
+    }, (error) => {
+      console.log('Failed to send email:', error.text);
+      alert('Failed to send subscription request. Please try again.');
+    });
   };
 
   return (
@@ -172,7 +200,7 @@ export default function Subscribe() {
                 </button>
               </div>
             ) : (
-              <form action="https://formsubmit.co/bowlvana.core@gmail.com" method="POST" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
                 {/* Row: Name */}
                 <label className="field-label">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const CONTACT_DETAILS = [
   {
@@ -46,7 +47,28 @@ export default function Contact() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setSuccess(true);
+
+    const templateParams = {
+      name: form.name,
+      email: form.email,
+      mobile: form.mobile,
+      subject: form.subject || 'General Enquiry',
+      message: form.message,
+      enquiry_type: 'Contact Enquiry'
+    };
+
+    emailjs.send(
+      'service_stuxbpj',    // EmailJS service ID
+      'template_d747kcb',   // EmailJS template ID
+      templateParams,
+      'KM_lYNA3_b38eQcIs'  // EmailJS public key
+    ).then((result) => {
+      console.log('Email successfully sent!', result.text);
+      setSuccess(true);
+    }, (error) => {
+      console.log('Failed to send email:', error.text);
+      alert('Failed to send message. Please try again.');
+    });
   };
 
   const inputStyle = 'field-input';
@@ -186,7 +208,7 @@ export default function Contact() {
                 </button>
               </div>
             ) : (
-              <form action="https://formsubmit.co/bowlvana.core@gmail.com" method="POST" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                   <label className={labelStyle}>
