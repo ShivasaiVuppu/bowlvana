@@ -147,8 +147,23 @@ const MENU_DATA = [
     ],
   },
   {
+    category: 'Customize Your Meal',
+    emoji: '⚙️',
+    tagline: 'Design your perfect meal with custom macros, ingredients, and cooking methods',
+    items: [
+      { name: 'Build Your Own Bowl', price: 324.95, badge: 'Fully Customizable', desc: 'Choose your protein, carbs, vegetables, and sauce. Track exact macros: protein, carbs, fat, and fiber.' },
+      { name: 'Custom Protein Plate', price: 389.95, badge: 'Macro Tracked', desc: 'Select protein portions (150g-300g), cooking method, and sides. Detailed nutritional breakdown provided.' },
+      { name: 'Personalized Salad Bowl', price: 224.95, badge: 'Nutrition Focused', desc: 'Pick your greens, toppings, dressing, and portion sizes. Complete calorie and macro information.' },
+      { name: 'Custom Wrap Creation', price: 254.95, desc: 'Choose wrap type, protein fillings, vegetables, and sauces. Customize for your dietary goals.' },
+      { name: 'Tailored Meal Prep', price: 449.95, badge: 'Weekly Plan', desc: '5-day customized meal plan with specific macro targets. Recipes and cooking instructions included.' },
+      { name: 'Diet-Specific Bowl', price: 299.95, badge: 'Keto/Vegan/Low-Carb', desc: 'Meals designed for specific dietary requirements with precise macro calculations.' },
+      { name: 'Athlete Fuel Bowl', price: 374.95, badge: 'High Performance', desc: 'Optimized for athletic performance with custom protein:carb ratios and recovery nutrients.' },
+      { name: 'Weight Management Bowl', price: 274.95, badge: 'Calorie Controlled', desc: 'Portion-controlled meals with exact calorie counts and balanced macronutrients.' },
+    ],
+  },
+  {
     category: 'Grilled & Sides',
-    emoji: 'ð',
+    emoji: '🍖',
     tagline: 'Lean grilled proteins and healthy sides for clean eating satisfaction',
     items: [
       { name: 'Grilled Chicken 200g',              price: 472.50, badge: 'Pure Protein', type: 'non-veg', desc: 'Juicy grilled chicken breast, perfectly seasoned and high in protein.' },

@@ -3,34 +3,40 @@ import emailjs from '@emailjs/browser';
 
 const CONTACT_DETAILS = [
   {
-    icon: '📞',
+    icon: '',
     label: 'Phone / WhatsApp',
     value: '8498803808',
     href:  'tel:8498803808',
   },
   {
-    icon: '✉️',
+    icon: '',
     label: 'Email',
     value: 'bowlvana.core@gmail.com',
     href:  'mailto:bowlvana.core@gmail.com',
   },
   {
-    icon: '📍',
+    icon: '',
     label: 'Location',
     value: 'Hyderabad, Telangana',
     href:  null,
   },
   {
-    icon: '🕐',
+    icon: '',
     label: 'Operating Hours',
     value: 'Daily · 8 AM – 12 PM',
     href:  null,
   },
   {
-    icon: '💬',
+    icon: '',
     label: 'WhatsApp Direct',
     value: 'wa.me/918498803808',
     href:  'https://wa.me/918498803808',
+  },
+  {
+    icon: '',
+    label: 'Instagram',
+    value: '@bowlvana.in',
+    href:  'https://www.instagram.com/bowlvana.in/',
   },
 ];
 
@@ -175,6 +181,21 @@ export default function Contact() {
               style={{ marginTop: 36, display: 'inline-flex' }}
             >
               💬 Chat on WhatsApp
+            </a>
+
+            {/* Instagram Follow Button */}
+            <a
+              href="https://www.instagram.com/bowlvana.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline"
+              style={{ 
+                marginTop: 36, 
+                display: 'inline-flex',
+                gap: 8,
+              }}
+            >
+              📷 Follow us on Instagram
             </a>
           </div>
 

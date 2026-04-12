@@ -147,6 +147,21 @@ const MENU_DATA = [
     ],
   },
   {
+    category: 'Customize Your Meal',
+    emoji: 'â ï¸',
+    tagline: 'Design your perfect meal with custom macros, ingredients, and cooking methods',
+    items: [
+      { name: 'Build Your Own Bowl', price: 324.95, badge: 'Fully Customizable', desc: 'Choose your protein, carbs, vegetables, and sauce. Track exact macros: protein, carbs, fat, and fiber.' },
+      { name: 'Custom Protein Plate', price: 389.95, badge: 'Macro Tracked', desc: 'Select protein portions (150g-300g), cooking method, and sides. Detailed nutritional breakdown provided.' },
+      { name: 'Personalized Salad Bowl', price: 224.95, badge: 'Nutrition Focused', desc: 'Pick your greens, toppings, dressing, and portion sizes. Complete calorie and macro information.' },
+      { name: 'Custom Wrap Creation', price: 254.95, desc: 'Choose wrap type, protein fillings, vegetables, and sauces. Customize for your dietary goals.' },
+      { name: 'Tailored Meal Prep', price: 449.95, badge: 'Weekly Plan', desc: '5-day customized meal plan with specific macro targets. Recipes and cooking instructions included.' },
+      { name: 'Diet-Specific Bowl', price: 299.95, badge: 'Keto/Vegan/Low-Carb', desc: 'Meals designed for specific dietary requirements with precise macro calculations.' },
+      { name: 'Athlete Fuel Bowl', price: 374.95, badge: 'High Performance', desc: 'Optimized for athletic performance with custom protein:carb ratios and recovery nutrients.' },
+      { name: 'Weight Management Bowl', price: 274.95, badge: 'Calorie Controlled', desc: 'Portion-controlled meals with exact calorie counts and balanced macronutrients.' },
+    ],
+  },
+  {
     category: 'Grilled & Sides',
     emoji: 'ð',
     tagline: 'Lean grilled proteins and healthy sides for clean eating satisfaction',
@@ -262,7 +277,7 @@ export default function CategoryPage({ categoryName }) {
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ transform: 'rotate(180deg)' }}>
             <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          All Categories
+          Back to Main Menu
         </button>
 
         {/* Category heading */}
@@ -296,26 +311,28 @@ export default function CategoryPage({ categoryName }) {
                 style={{ padding: '28px 24px', position: 'relative' }}
               >
                 {/* Food Type Icon */}
-                <div className={`icon ${FOOD_TYPE_ICONS[item.type] || ''}`} style={{
-                  position: 'absolute',
-                  top: 16,
-                  right: 16,
-                  width: '20px',
-                  height: '20px',
-                  border: '2px solid',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderColor: item.type === 'veg' ? 'green' : item.type === 'non-veg' ? 'red' : 'orange',
-                }}>
-                  <span style={{
-                    width: '10px',
-                    height: '10px',
-                    borderRadius: '50%',
-                    display: 'block',
-                    backgroundColor: item.type === 'veg' ? 'green' : item.type === 'non-veg' ? 'red' : 'orange',
-                  }}></span>
-                </div>
+                {item.type && (
+                  <div className={`icon ${FOOD_TYPE_ICONS[item.type] || ''}`} style={{
+                    position: 'absolute',
+                    top: 16,
+                    right: 16,
+                    width: '20px',
+                    height: '20px',
+                    border: '2px solid',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderColor: item.type === 'veg' ? 'green' : item.type === 'non-veg' ? 'red' : 'orange',
+                  }}>
+                    <span style={{
+                      width: '10px',
+                      height: '10px',
+                      borderRadius: '50%',
+                      display: 'block',
+                      backgroundColor: item.type === 'veg' ? 'green' : item.type === 'non-veg' ? 'red' : 'orange',
+                    }}></span>
+                  </div>
+                )}
 
                 {/* Badge */}
                 {item.badge && badgeStyle && (
@@ -364,10 +381,13 @@ export default function CategoryPage({ categoryName }) {
       <style>{`
         @media (max-width: 900px) {
           .floating-back-btn {
+            top: auto !important;
             bottom: 20px !important;
+            left: auto !important;
             right: 20px !important;
-            padding: '10px 16px' !important;
-            font-size: '0.85rem' !important;
+            transform: none !important;
+            padding: 10px 16px !important;
+            font-size: 0.85rem !important;
           }
           .floating-back-btn svg {
             width: 18px !important;
@@ -376,10 +396,13 @@ export default function CategoryPage({ categoryName }) {
         }
         @media (max-width: 600px) {
           .floating-back-btn {
+            top: auto !important;
             bottom: 16px !important;
+            left: auto !important;
             right: 16px !important;
-            padding: '8px 14px' !important;
-            font-size: '0.8rem' !important;
+            transform: none !important;
+            padding: 8px 14px !important;
+            font-size: 0.8rem !important;
           }
           .floating-back-btn svg {
             width: 16px !important;
